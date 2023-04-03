@@ -12,6 +12,8 @@ export const useCartStore = defineStore("CartStore", {
     isEmpty: (state) => state.count === 0,
     grouped: (state) => groupBy(state.items, (item) => item.name),
     groupCount: (state) => (name) => state.grouped[name].length,
+    total: (state) =>
+      state.items.reduce((previous, current) => previous + current.price, 0),
   },
   actions: {
     addItems(count, item) {
