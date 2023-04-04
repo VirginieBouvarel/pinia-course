@@ -11,10 +11,15 @@ import AppCountInput from "./components/AppCountInput.vue";
 import AppModalOverlay from "./components/AppModalOverlay.vue";
 
 // Init App
-createApp(App)
+const app = createApp(App);
+app
   .use(createPinia())
   .use(FontAwesomePlugin)
   .component("AppButton", AppButton)
   .component("AppCountInput", AppCountInput)
   .component("AppModalOverlay", AppModalOverlay)
   .mount("#app");
+
+app.config.errorHandler = (error) => {
+  console.log("%c CUSTOM UNCAUGHT", "color: orange", error);
+};
