@@ -8,6 +8,13 @@ const productStore = useProductStore();
 const cartStore = useCartStore();
 
 productStore.fill();
+cartStore.$onAction(({ name, args, after, onError }) => {
+  if (name === "addItems") {
+    console.log("before");
+    after(() => console.log(args[0]));
+    onError((error) => console.log("Action error: ", error.message));
+  }
+});
 </script>
 
 <template>
