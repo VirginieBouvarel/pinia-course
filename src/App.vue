@@ -12,7 +12,7 @@ cartStore.$subscribe((mutation, state) => {
   console.log(mutation);
   if (!manualEditingHistory.value) {
     history.push(JSON.stringify(state));
-    // future.splice(0, future.length);
+    future.splice(0, future.length);
   }
 });
 cartStore.$onAction(({ name, args, after, onError }) => {
